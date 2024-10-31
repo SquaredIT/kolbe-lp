@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karriere bei Kolb Elektro</title>
+    <style>
+        :root {
+            --primary-blue: #0B1139;
+            --accent-red: #E4001C;
+            --text-gray: #333;
+            --light-gray: #f5f7ff;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-gray);
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a237e 100%);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/api/placeholder/1920/1080') center/cover;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1200px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            background-color: var(--accent-red);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(228, 0, 28, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(228, 0, 28, 0.4);
+            background-color: #ff0020;
+        }
+
+        .cta-button i {
+            font-size: 1.1em;
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-blue {
+            background-color: var(--light-gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-blue::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-red));
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .card i {
+            color: var(--accent-red);
+            font-size: 1.8rem;
+            background: rgba(228, 0, 28, 0.1);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .team-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            margin-bottom: 4rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        ul li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        ul li::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            color: var(--accent-red);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-blue);
+            margin-bottom: 4rem;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            position: relative;
+            padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .section-title i {
+            color: var(--accent-red);
+            font-size: 0.9em;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-red));
+            border-radius: 3px;
+        }
+
+        .email-link {
+            color: var(--accent-red);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .email-link:hover {
+            color: var(--primary-blue);
+            transform: translateX(5px);
+        }
+
+        .email-link i {
+            font-size: 1.2em;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            color: var(--accent-red);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.3rem;
+            }
+
+            .card i {
+                padding: 0.8rem;
+                font-size: 1.5rem;
+            }
+
+            .hero-content {
+                padding: 0 1rem;
+            }
+
+            .team-image {
+                height: 300px;
+                margin: 2rem 0;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-icon {
+            animation: float 3s ease-in-out infinite;
+        }
+        .icon {
+            font-size: 2rem;
+            display: inline-block;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .card h3 .icon {
+            background: rgba(228, 0, 28, 0.1);
+            padding: 0.5rem;
+            border-radius: 12px;
+            font-size: 2.5rem;
+        }
+
+        .section-title .icon {
+            font-size: 2.5rem;
+            vertical-align: middle;
+            margin-bottom: 0.5rem;
+        }
+
+        .card:hover .icon {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <!--img src="/api/placeholder/500/100" alt="Kolb Elektro Logo" class="logo"-->
+            <h1>Verkauf & Beratung sind genau dein Ding? ⚡</h1>
+            <p>Dann suchen wir genau DICH! (m/w/d)</p>
+            <a href="mailto:bewerbung@kolb-elektro.de" class="cta-button">
+                📧 Jetzt bewerben
+            </a>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="icon">👥</span> Über uns
+            </h2>
+            <p>Wir, von der Firma Kolb & Schmelcher Elektro GmbH, sind ein Team von ca. 30 zum Teil langjährigen Mitarbeitern mit bis zu 40 Jahren Betriebszugehörigkeit. Der Familienbetrieb wurde 1989 von Elektromeister Stephan Kolb gegründet.</p>
+               <img src="https://i.imgur.com/JqKjjtL.jpeg" alt="Das Kolb Elektro Team vor dem Firmengebäude" class="team-image">
+
+        </div>
+    </section>
+
+    <section class="section section-blue">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="icon">⚡</span> Deine Aufgaben
+            </h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><span class="icon">💡</span> Verkauf & Beratung</h3>
+                    <ul>
+                        <li>Verkauf & Beratung von hochwertigen Elektrogeräten</li>
+                        <li>Sortimentsgestaltung</li>
+                        <li>Kassierung und Reklamationsbearbeitung</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🔌</span> Warenmanagement</h3>
+                    <ul>
+                        <li>Warenbestellung</li>
+                        <li>Warenannahme</li>
+                        <li>Wareneingangskontrolle</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🖥️</span> Bürotätigkeiten</h3>
+                    <ul>
+                        <li>Eingangs- und Ausgangsrechnungen</li>
+                        <li>Terminorganisation</li>
+                        <li>Bearbeitung von Kundenanfragen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="icon">🎁</span> Das bieten wir dir
+            </h2>
+            <div class="grid">
+                <div class="card">
+                    <h3><span class="icon">⚖️</span> Work-Life-Balance</h3>
+                    <ul>
+                        <li>30 Tage Urlaub</li>
+                        <li>Familiäre Atmosphäre</li>
+                        <li>Team-Veranstaltungen</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">📈</span> Entwicklung</h3>
+                    <ul>
+                        <li>Herausfordernde Aufgaben</li>
+                        <li>Eigenverantwortung</li>
+                        <li>Entwicklungspotenzial</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🏢</span> Arbeitsumfeld</h3>
+                    <ul>
+                        <li>Flache Hierarchien</li>
+                        <li>Bezahlung nach Tarif</li>
+                        <li>Zwei moderne Standorte</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bewerbung" class="section section-blue">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="icon">📬</span> Bewirb dich jetzt!
+            </h2>
+            <div class="card">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="icon">📧</span>
+                        <div>
+                            <h3>Per E-Mail</h3>
+                            <a href="mailto:bewerbung@kolb-elektro.de" class="email-link">
+                                bewerbung@kolb-elektro.de ➜
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="icon">📍</span>
+                        <div>
+                            <h3>Per Post</h3>
+                            <p>Kolb & Schmelcher Elektro GmbH<br>
+                            Hallesche Str. 24<br>
+                            68309 Mannheim</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
